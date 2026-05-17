@@ -17,6 +17,7 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<link rel="manifest" href="manifest.json">
 
 <meta property="og:title" content="Мангал Хаус — кафе, пиццерия, доставка еды в Цимлянске">
 <meta property="og:description" content="Уютное кафе в центре Цимлянска с домашней кухней, сочным мангалом и ароматной пиццей">
@@ -63,6 +64,7 @@
 </script>
 </head>
 <body>
+<div class="progress-bar" id="progressBar"></div>
 
 <!-- NAV -->
 <nav class="nav" id="nav">
@@ -135,10 +137,10 @@
       <p>За 10 лет работы мы стали любимым местом для сотен гостей. Приходите, мы вас ждём!</p>
     </div>
     <div class="about-stats reveal">
-      <div class="stat-card"><div class="stat-num">4.5</div><div class="stat-label">Рейтинг на Яндекс Картах</div></div>
-      <div class="stat-card"><div class="stat-num">338+</div><div class="stat-label">Отзывов от гостей</div></div>
-      <div class="stat-card"><div class="stat-num">10</div><div class="stat-label">Лет с вами</div></div>
-      <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Видов пиццы</div></div>
+      <div class="stat-card"><div class="stat-num"><span class="counter" data-target="45" data-decimals="1">0.0</span></div><div class="stat-label">Рейтинг на Яндекс Картах</div></div>
+      <div class="stat-card"><div class="stat-num"><span class="counter" data-target="338">0</span><span class="stat-plus">+</span></div><div class="stat-label">Отзывов от гостей</div></div>
+      <div class="stat-card"><div class="stat-num"><span class="counter" data-target="10">0</span></div><div class="stat-label">Лет с вами</div></div>
+      <div class="stat-card"><div class="stat-num"><span class="counter" data-target="8">0</span></div><div class="stat-label">Видов пиццы</div></div>
     </div>
   </div>
 </section>
@@ -376,6 +378,11 @@
   <p>&copy; 2026 Мангал Хаус · Цимлянск · ул. Карла Маркса, 9</p>
 </footer>
 
+<button class="back-top" id="backTop" aria-label="Наверх">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
 <script src="js/script.js"></script>
+<script>if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js')</script>
 </body>
 </html>
