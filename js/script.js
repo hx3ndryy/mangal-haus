@@ -12,7 +12,17 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
 });
 
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>80));
+const backTop=document.getElementById('backTop');
+const progBar=document.getElementById('progressBar');
+
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>80);
+  backTop.classList.toggle('visible',window.scrollY>500);
+  const p=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight);
+  progBar.style.transform='scaleX('+Math.min(p,1)+')';
+});
+
+backTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 const burger=document.getElementById('navBurger');
 const navList=document.getElementById('navList');
@@ -21,6 +31,28 @@ document.querySelectorAll('.nav-list a').forEach(a=>a.addEventListener('click',(
 
 const obs=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('show');obs.unobserve(i.target)}})},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+const counterObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    counterObs.unobserve(e.target);
+    e.target.querySelectorAll('.counter').forEach(c=>{
+      const target=parseFloat(c.dataset.target);
+      const decimals=parseInt(c.dataset.decimals)||0;
+      const duration=1600;
+      const start=performance.now();
+      const step=now=>{
+        const p=Math.min((now-start)/duration,1);
+        const val=p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+        c.textContent=decimals===1?(val*target/10).toFixed(1):Math.round(val*target);
+        if(p<1)requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+  });
+},{threshold:.5});
+
+document.querySelectorAll('.about-stats').forEach(el=>counterObs.observe(el));
 
 document.querySelectorAll('.menu-filter').forEach(btn=>{
   btn.addEventListener('click',()=>{
