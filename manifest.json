@@ -1,0 +1,22 @@
+{
+  "name": "Мангал Хаус — кафе, пиццерия, доставка",
+  "short_name": "Мангал Хаус",
+  "description": "Уютное кафе в центре Цимлянска с домашней кухней, сочным мангалом и ароматной пиццей",
+  "start_url": "/mangal-haus/",
+  "display": "standalone",
+  "background_color": "#0c0806",
+  "theme_color": "#0c0806",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://client-site.s3.yandex.net/r19640913/_next/static/media/android-chrome-192x192.f7ace3ce.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://client-site.s3.yandex.net/r19640913/_next/static/media/android-chrome-512x512.bbdbc78b.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
